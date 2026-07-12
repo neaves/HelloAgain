@@ -1,12 +1,12 @@
 ## Interface: 30300
-## Title: Hello Again
+## Title: Remember Me
 ## Notes: Tracks your familiarity with other players based on shared adventures.
 ## Author:
 ## Version: 1.0
 ## DefaultState: enabled
-## SavedVariables: HelloAgainDB
+## SavedVariables: RememberMeDB
 
 db.lua
 score.lua
-HelloAgain.lua
+RememberMe.lua
 tooltip.lua

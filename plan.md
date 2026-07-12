@@ -1,4 +1,4 @@
-# Hello Again — Addon Plan
+# Remember Me — Addon Plan
 
 ## Original Objectives
 
@@ -6,7 +6,7 @@ Social familiarity tracker for **Project Ascension** (WotLK 3.3.5a). Builds a pe
 cross-session database of player interactions, weighted into a **familiarity score**. Surfaces
 that score passively so the player remembers who they've adventured with.
 
-- Tooltip line on player inspect/hover: "Hello Again: Familiarity 47"
+- Tooltip line on player inspect/hover: "Remember Me: Familiarity 47"
 - Party join announcement in chat if score exceeds threshold
 - Score built from weighted interaction events recorded automatically during play
 - No manual input required; entirely passive observation
@@ -29,17 +29,17 @@ infrastructure is in place but **has not been tested with live party members**.
 
 ### Files
 ```
-HelloAgain/
-├── HelloAgain.toc
-├── HelloAgain.lua     — event frame, party diff, buff detection via CLEU
+RememberMe/
+├── RememberMe.toc
+├── RememberMe.lua     — event frame, party diff, buff detection via CLEU
 ├── db.lua             — SavedVariables CRUD, rate limiting, score accumulation
 ├── score.lua          — weight table, announce threshold, cooldown constant
 └── tooltip.lua        — GameTooltip hook
 ```
 
-### SavedVariables (`HelloAgainDB`)
+### SavedVariables (`RememberMeDB`)
 ```
-HelloAgainDB = {
+RememberMeDB = {
   ["CharacterName"] = {
     score        = 142,
     interactions = [ { type, timestamp, weight }, ... ],
@@ -147,15 +147,15 @@ Mirror BuffMe's `recentlyCastName` approach: only record `buff_given` when CLEU
 for the same spell name. Prevents proc-sourced buffs from generating false familiarity credit.
 
 ### 8. BuffMe integration
-If BuffMe is loaded, HelloAgain can hook into successful buff casts to record `buff_given`
+If BuffMe is loaded, RememberMe can hook into successful buff casts to record `buff_given`
 without duplicating CLEU monitoring. Pattern:
 ```lua
 -- In BuffMe.lua, after a successful cast is confirmed:
-if HelloAgain_AddInteraction then
-    HelloAgain_AddInteraction(targetName, "buff_given", 5)
+if RememberMe_AddInteraction then
+    RememberMe_AddInteraction(targetName, "buff_given", 5)
 end
 ```
-This gives HelloAgain higher-confidence data than CLEU alone (already filtered by BuffMe's
+This gives RememberMe higher-confidence data than CLEU alone (already filtered by BuffMe's
 proc guard and active-cast gate).
 
 ### 9. UNIT_SPELLCAST_SUCCEEDED supplement for buff tracking

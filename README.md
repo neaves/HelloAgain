@@ -1,8 +1,8 @@
-# Hello Again
+# Remember Me
 
 A social familiarity tracker for [Project Ascension](https://ascension.gg).
 
-Hello Again builds a persistent database of your interactions with other players and surfaces a **familiarity score** wherever you encounter them — in tooltips when you target or mouse over a character, and as a party-chat announcement when a known adventurer joins your group.
+Remember Me builds a persistent database of your interactions with other players and surfaces a **familiarity score** wherever you encounter them — in tooltips when you target or mouse over a character, and as a party-chat announcement when a known adventurer joins your group.
 
 ## Features
 
@@ -23,13 +23,13 @@ Hello Again builds a persistent database of your interactions with other players
 
 ## Installation
 
-Copy the `HelloAgain` folder into your WoW AddOns directory:
+Copy the `RememberMe` folder into your WoW AddOns directory:
 
 ```
-<WoW>/Interface/AddOns/HelloAgain/
+<WoW>/Interface/AddOns/RememberMe/
 ```
 
-Enable **Hello Again** on the AddOns screen at character select.
+Enable **Remember Me** on the AddOns screen at character select.
 
 ## Compatibility
 
